@@ -1,12 +1,16 @@
 package com.dujiaqi.example.provider;
 
 import com.dujiaqi.durpc.RpcApplication;
-import com.dujiaqi.example.common.service.UserService;
 import com.dujiaqi.durpc.registry.LocalRegistry;
 import com.dujiaqi.durpc.server.HttpServer;
 import com.dujiaqi.durpc.server.VertxHttpServer;
+import com.dujiaqi.example.common.service.UserService;
 
-public class EasyProviderExample {
+/**
+ * 简易服务提供者示例
+ */
+public class ProviderExample {
+
     public static void main(String[] args) {
         // RPC 框架初始化
         RpcApplication.init();
@@ -18,4 +22,5 @@ public class EasyProviderExample {
         HttpServer httpServer = new VertxHttpServer();
         httpServer.doStart(RpcApplication.getRpcConfig().getServerPort());
     }
+
 }
