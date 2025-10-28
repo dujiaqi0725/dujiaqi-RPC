@@ -2,14 +2,17 @@ package com.dujiaqi.durpc.proxy;
 
 import cn.hutool.http.HttpRequest;
 import cn.hutool.http.HttpResponse;
+import com.dujiaqi.durpc.RpcApplication;
 import com.dujiaqi.durpc.model.RpcRequest;
 import com.dujiaqi.durpc.model.RpcResponse;
 import com.dujiaqi.durpc.serializer.JdkSerializer;
 import com.dujiaqi.durpc.serializer.Serializer;
+import com.dujiaqi.durpc.serializer.SerializerFactory;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.util.ServiceLoader;
 
 /**
  * 服务代理 ( JDK 动态代理)
@@ -25,7 +28,7 @@ public class ServiceProxy implements InvocationHandler {
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         // 指定序列化器
-        Serializer serializer = new JdkSerializer();
+        Serializer serializer = SerializerFactory.getInstance(RpcApplication.getRpcConfig().getSerializer());
 
         // 构造请求
         RpcRequest rpcRequest = RpcRequest.builder()

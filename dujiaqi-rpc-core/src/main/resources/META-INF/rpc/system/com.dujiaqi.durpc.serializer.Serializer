@@ -1,0 +1,4 @@
+jdk=com.dujiaqi.durpc.serializer.JdkSerializer
+hessian=com.dujiaqi.durpc.serializer.HessianSerializer
+json=com.dujiaqi.durpc.serializer.JsonSerializer
+kryo=com.dujiaqi.durpc.serializer.KryoSerializer
